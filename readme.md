@@ -1,21 +1,49 @@
-### Dynamic Sales Insights Dashboard A Power BI Case Study for Data-Driven Decision Making
+Dynamic Sales Insights Dashboard - A Power BI Case Study for Data-Driven Decision Making
+Overview
+This project involves building a Dynamic Sales Insights Dashboard using Power BI to facilitate data-driven decision-making. The dashboard provides key sales insights such as revenue trends, top-performing customers and products, and market-wise sales performance.
 
-### Power BI
+Key Features
+Interactive Sales Dashboard: Displays revenue trends, top customers, top products, and market performance.
+Revenue and Sales Quantity Metrics: Created measures for revenue and sales quantity to track sales performance.
+Currency Conversion: Converts USD to INR for consistency in financial reporting.
+Data Cleaning & Transformation: Removed null values and refined market data for accuracy.
+Data Processing Steps
+1. Filtering Null Values in Market Table
+To remove null values from the dbo_markets table:
 
-### Power query
-
-### Filtering the null values in markets table
-
+PowerQuery
+Copy
+Edit
 = Table.SelectRows(dbo_markets, each ([zone] <> null))
+2. Converting US Currency to Indian Currency
+To standardize revenue, we applied the following transformation:
 
-### Converting US currency to Indian currency
-
+PowerQuery
+Copy
+Edit
 = Table.AddColumn(#"Filtered Rows", "sales", each if [currency] = "USD" then [sales_amount]*85 else [sales_amount])
+(Assuming an exchange rate of 1 USD = 85 INR).
 
-### Creating new measure Sales Revenue
+3. Creating Sales Revenue Measure
+To calculate total sales revenue:
 
-Revenue = sum(transactions[sales_amount])
+DAX
+Copy
+Edit
+Revenue = SUM(transactions[sales_amount])
+4. Creating Sales Quantity Measure
+To calculate total sales quantity:
 
-### Creating new measure Sales Quantity
-
-Sales Quantity = sum(transactions[sales_qty])
+DAX
+Copy
+Edit
+Sales Quantity = SUM(transactions[sales_qty])
+Insights Derived
+Total Revenue: ₹987M
+Total Sales Quantity: 2M units
+Top Customer: Electrical… (₹414M revenue)
+Top Market by Revenue: Delhi NCR (₹521M)
+Top Market by Sales Quantity: Delhi NCR (0.99M units)
+Revenue Trend: Fluctuating with a declining trend towards 2020
+Conclusion
+The Power BI dashboard effectively visualizes key sales insights, enabling data-driven decision-making. With enhanced data cleaning, currency standardization, and interactive visualizations, it provides actionable insights for business strategy optimization.
