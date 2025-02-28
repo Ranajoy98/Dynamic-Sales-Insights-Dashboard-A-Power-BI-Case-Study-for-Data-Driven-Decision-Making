@@ -44,6 +44,4 @@ Sales Quantity = SUM(transactions[sales_qty])
 - **Top Market by Sales Quantity:** Delhi NCR (0.99M units)  
 - **Revenue Trend:** Fluctuating with a declining trend towards 2020  
 
-## **Conclusion**  
-The Power BI dashboard effectively visualizes key sales insights, enabling data-driven decision-making. With enhanced data cleaning, currency standardization, and interactive visualizations, it provides actionable insights for business strategy optimization.  
 
